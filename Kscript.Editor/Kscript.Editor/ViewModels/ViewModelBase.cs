@@ -1,8 +1,7 @@
 ﻿using ReactiveUI;
 
-namespace Kscript.Editor.ViewModels
+namespace Kscript.Editor.ViewModels;
+
+public class ViewModelBase : ReactiveObject
 {
-    public class ViewModelBase : ReactiveObject
-    {
-    }
 }

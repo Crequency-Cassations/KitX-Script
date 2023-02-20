@@ -1,12 +1,11 @@
 ﻿using Avalonia.Controls;
 
-namespace Kscript.Editor.Views
+namespace Kscript.Editor.Views;
+
+public partial class MainView : UserControl
 {
-    public partial class MainView : UserControl
+    public MainView()
     {
-        public MainView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }
