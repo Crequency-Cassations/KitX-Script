@@ -8,8 +8,16 @@
         Title="Kscript.Editor"
         d:DesignHeight="450"
         d:DesignWidth="800"
+        Background="Transparent"
         Icon="/Assets/avalonia-logo.ico"
+        TransparencyLevelHint="AcrylicBlur"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d">
+
+    <!--
+        ExtendClientAreaChromeHints="SystemChrome"
+        ExtendClientAreaToDecorationsHint="True"
+    -->
+
     <views:MainView/>
 </Window>
