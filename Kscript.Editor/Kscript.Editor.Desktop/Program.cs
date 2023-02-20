@@ -1,5 +1,8 @@
 ﻿using Avalonia;
 using Avalonia.ReactiveUI;
+using Kscript.Editor.Data;
+using Kscript.Editor.Desktop.PInvoke;
+using Kscript.Editor.Views;
 using System;
 
 namespace Kscript.Editor.Desktop
@@ -10,8 +13,16 @@ namespace Kscript.Editor.Desktop
         // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
         // yet and stuff might break.
         [STAThread]
-        public static void Main(string[] args) => BuildAvaloniaApp()
-            .StartWithClassicDesktopLifetime(args);
+        public static void Main(string[] args)
+        {
+            if (OperatingSystem.IsWindows())
+            {
+                nameof(GlobalInfo.WindowHandles).RegisterInfoReactor(() =>
+                    WindowStyle.UpdateStyleAttributes(nameof(MainWindow).RequestWindowHandle()));
+            }
+
+            BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
+        }
 
         // Avalonia configuration, don't remove; also used by visual designer.
         public static AppBuilder BuildAvaloniaApp()
