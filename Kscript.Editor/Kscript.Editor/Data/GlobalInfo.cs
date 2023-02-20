@@ -19,7 +19,7 @@ public static class GlobalInfo
     public static void InvokeReactor(this string name)
     {
         if (InfoReactors.TryGetValue(name, out var value))
-            value.ForEach(x => x.Invoke());
+            value.ForEach(x => x.Invoke(), true);
     }
 
     private static void OnInfoChanged(string info) => InvokeReactor(info);
@@ -45,4 +45,28 @@ public static class GlobalInfo
                 return (nint)value;
         throw new IndexOutOfRangeException();
     }
+
+    private static EditorState editorState = EditorState.Normal;
+
+    public static EditorState EditorState
+    {
+        get => editorState;
+        set
+        {
+            editorState = value;
+            OnInfoChanged(nameof(EditorState));
+        }
+    }
+}
+
+public enum EditorState
+{
+    Normal = 0,
+    Running = 1,
+    Debugging = 2,
+    RunInError = 3,
+    EventInvoking = 4,
+    TestsRunning = 5,
+    TestsPassed = 6,
+    TestsFailed = 7,
 }

@@ -25,12 +25,15 @@
         <ExperimentalAcrylicBorder IsHitTestVisible="False">
             <ExperimentalAcrylicBorder.Material>
                 <ExperimentalAcrylicMaterial BackgroundSource="Digger"
-                                             MaterialOpacity="0"
+                                             MaterialOpacity="{Binding MaterialOpacity}"
                                              TintColor="{Binding BackgroundTintColor}"
                                              TintOpacity="{Binding BackgroundTintOpacity}"/>
             </ExperimentalAcrylicBorder.Material>
         </ExperimentalAcrylicBorder>
 
-        <Button Command="{Binding UpdateVMCommand}" Content="{Binding Content}"/>
+        <Button HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Command="{Binding UpdateVMCommand}"
+                Content="{Binding Content}"/>
     </Grid>
 </UserControl>
